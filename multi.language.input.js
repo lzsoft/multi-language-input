@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+    const AF_JSON = "data-json";
     window.customElements.define('multi-language-input', class extends HTMLElement {
         constructor() {
             super();
@@ -26,9 +27,9 @@
         get currentLanguageVal() {
             let data = {};
             try {
-                data = JSON.parse(this.getAttribute("data-json")) || {};
+                data = JSON.parse(this.getAttribute(AF_JSON) || "{}") || {};
             } catch (e) {
-                console.error("The string multi-language-input try to parse is not a valid JSON.");
+                console.error("The string multi-language-input try to parse is not a valid JSON: " + this.getAttribute(AF_JSON));
             }
             let lang = this.querySelector(":scope > select").value;
             return data[lang] || "";
@@ -36,13 +37,13 @@
         set currentLanguageVal(value) {
             let data = {};
             try {
-                data = JSON.parse(this.getAttribute("data-json")) || {};
+                data = JSON.parse(this.getAttribute(AF_JSON) || "{}") || {};
             } catch (e) {
-                console.error("The string multi-language-input try to parse is not a valid JSON.");
+                console.error("The string multi-language-input try to parse is not a valid JSON: " + this.getAttribute(AF_JSON));
             }
             let lang = this.querySelector(":scope > select").value;
             data[lang] = value;
-            this.setAttribute("data-json", JSON.stringify(data));
+            this.setAttribute(AF_JSON, JSON.stringify(data));
         }
     });
 }());
