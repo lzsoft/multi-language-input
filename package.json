@@ -1,0 +1,16 @@
+{
+    "name": "multi.language.input",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [ "window", "browser", "Math", "NodeList", "api", "web-components" ],
+    "main": "multi.language.input.html",
+    "author": {
+        "name": "JingAn Chen",
+        "email": "lzsoft.cja@gmail.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lzsoft/multi.language.input.git"
+    }
+}
