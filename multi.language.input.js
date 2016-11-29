@@ -20,7 +20,7 @@
             });
             userInput.addEventListener("blur", (e) => {
                 this.currentLanguageVal = userInput.value;
-                this.dispatchEvent(e);
+                this.dispatchEvent(new Event("blur"));
             });
         }
         get currentLanguageVal() {
