@@ -26,7 +26,7 @@
         get currentLanguageVal() {
             let data = {};
             try {
-                data = JSON.parse(this.getAttribute("data-json"));
+                data = JSON.parse(this.getAttribute("data-json")) || {};
             } catch (e) {
                 console.error("The string multi-language-input try to parse is not a valid JSON.");
             }
@@ -36,7 +36,7 @@
         set currentLanguageVal(value) {
             let data = {};
             try {
-                data = JSON.parse(this.getAttribute("data-json"));
+                data = JSON.parse(this.getAttribute("data-json")) || {};
             } catch (e) {
                 console.error("The string multi-language-input try to parse is not a valid JSON.");
             }
