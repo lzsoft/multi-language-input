@@ -24,13 +24,23 @@
             });
         }
         get currentLanguageVal() {
-            var data = JSON.parse(this.getAttribute("data-json")) || {};
-            var lang = this.querySelector(":scope > select").value;
+            let data = {};
+            try {
+                data = JSON.parse(this.getAttribute("data-json"));
+            } catch (e) {
+                console.error("The string multi-language-input try to parse is not a valid JSON.");
+            }
+            let lang = this.querySelector(":scope > select").value;
             return data[lang] || "";
         }
         set currentLanguageVal(value) {
-            var data = JSON.parse(this.getAttribute("data-json")) || {};
-            var lang = this.querySelector(":scope > select").value;
+            let data = {};
+            try {
+                data = JSON.parse(this.getAttribute("data-json"));
+            } catch (e) {
+                console.error("The string multi-language-input try to parse is not a valid JSON.");
+            }
+            let lang = this.querySelector(":scope > select").value;
             data[lang] = value;
             this.setAttribute("data-json", JSON.stringify(data));
         }
