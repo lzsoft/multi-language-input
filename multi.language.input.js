@@ -18,8 +18,9 @@
             this.querySelector(":scope > select").addEventListener("change", () => {
                 userInput.value = this.currentLanguageVal;
             });
-            userInput.addEventListener("keyup", () => {
+            userInput.addEventListener("blur", (e) => {
                 this.currentLanguageVal = userInput.value;
+                this.dispatchEvent(e);
             });
         }
         get currentLanguageVal() {
