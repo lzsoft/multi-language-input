@@ -1,9 +1,9 @@
 {
     "name": "multi.language.input",
     "description": "",
-    "authors": [ "JingAn Chen" ],
+    "authors": ["JingAn Chen"],
     "license": "MIT",
-    "keywords": [ "window", "browser", "Math", "NodeList", "web-components" ],
+    "keywords": ["window", "browser", "Math", "NodeList", "web-components"],
     "homepage": "https://github.com/lzsoft/multi.language.input",
-    "ignore": [ "**/.*", "node_modules", "bower_components", "test", "tests", "publish.bat", "readme.md" ]
+    "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests", "publish.bat", "readme.md"]
 }

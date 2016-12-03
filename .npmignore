@@ -1,4 +1,6 @@
 .eslintrc.json
 publish.bat,
 readme.md
-/test
+test/
+node_modules/
+bower_components/
