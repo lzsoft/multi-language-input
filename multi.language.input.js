@@ -41,6 +41,7 @@
             return data[lang] || "";
         }
         set currentLanguageVal(value) {
+            let self = this;
             let data = {};
             try {
                 data = JSON.parse(self.getAttribute(AF_JSON) || "{}") || {};

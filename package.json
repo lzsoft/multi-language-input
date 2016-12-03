@@ -1,6 +1,6 @@
 {
     "name": "multi.language.input",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "",
     "keywords": ["window", "browser", "Math", "NodeList", "api", "web-components"],
     "main": "multi.language.input.html",
