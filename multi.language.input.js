@@ -1,56 +1,53 @@
-(function () {
+(function() {
     'use strict';
-    const AF_JSON = "data-json";
-    const EV_DEJSONIZE = "dejsonize";
+    const ATTR_JSON = "data-json";
+    const ATTR_TYPE = "data-type";
+    let INPUT = null;
+    //
     window.customElements.define('multi-language-input', class extends HTMLElement {
+        static get observedAttributes() {
+            return [ATTR_JSON];
+        }
+        attributeChangedCallback(attr, oldValue, newValue) {
+            if (attr === ATTR_JSON) {
+                this.render(this);
+            }
+        }
         constructor() {
             super();
+            this.innerHTML = document.querySelector('link[href*="multi.language.input.html"]').import.querySelector("template").innerHTML;
             //
-            let self = this;
-            let userInput = null;
-            self.innerHTML = document.querySelector('link[href*="multi.language.input.html"]').import.querySelector("template").innerHTML;
-            if (self.getAttribute("data-type") === "textarea") {
-                self.querySelector(":scope > input").remove();
-                self.querySelector(":scope > textarea").placeholder = self.title;
-                userInput = self.querySelector(":scope > textarea");
+            if (!this.getAttribute(ATTR_JSON)) {
+                this.setAttribute(ATTR_JSON, "{}");
+            }
+            //
+            if (this.getAttribute(ATTR_TYPE) === "textarea") {
+                this.querySelector(":scope > input").remove();
+                this.querySelector(":scope > textarea").placeholder = this.title;
+                INPUT = this.querySelector(":scope > textarea");
             } else {
-                self.querySelector(":scope > textarea").remove();
-                self.querySelector(":scope > input").placeholder = self.title;
-                userInput = self.querySelector(":scope > input");
+                this.querySelector(":scope > textarea").remove();
+                this.querySelector(":scope > input").placeholder = this.title;
+                INPUT = this.querySelector(":scope > input");
             }
-            self.querySelector(":scope > select").addEventListener("change", () => {
-                userInput.value = self.currentLanguageVal;
-            });
-            userInput.addEventListener("blur", (e) => {
-                self.currentLanguageVal = userInput.value;
-                self.dispatchEvent(new Event("blur"));
-            });
-            self.addEventListener(EV_DEJSONIZE, function () {
-                self.querySelector(":scope > select").dispatchEvent(new Event("change"));
+            //
+            this.eventize();
+            this.render(this);
+        }
+        eventize() {
+            let self = this;
+            self.querySelector(":scope > select").addEventListener("change", function() { self.render(self); });
+            INPUT.addEventListener("blur", () => {
+                let json = JSON.parse(self.getAttribute(ATTR_JSON));
+                let lang = self.querySelector(":scope > select").value;
+                json[lang] = INPUT.value;
+                self.setAttribute(ATTR_JSON, JSON.stringify(json));
             });
         }
-        get currentLanguageVal() {
-            let self = this;
-            let data = {};
-            try {
-                data = JSON.parse(self.getAttribute(AF_JSON) || "{}") || {};
-            } catch (e) {
-                console.error("The string multi-language-input try to parse is not a valid JSON: " + self.getAttribute(AF_JSON));
-            }
+        render(self) {
+            let json = JSON.parse(self.getAttribute(ATTR_JSON));
             let lang = self.querySelector(":scope > select").value;
-            return data[lang] || "";
-        }
-        set currentLanguageVal(value) {
-            let self = this;
-            let data = {};
-            try {
-                data = JSON.parse(self.getAttribute(AF_JSON) || "{}") || {};
-            } catch (e) {
-                console.error("The string multi-language-input try to parse is not a valid JSON: " + self.getAttribute(AF_JSON));
-            }
-            let lang = self.querySelector(":scope > select").value;
-            data[lang] = value;
-            self.setAttribute(AF_JSON, JSON.stringify(data));
+            INPUT.value = json[lang] || "";
         }
     });
 }());
