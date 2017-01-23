@@ -33,7 +33,7 @@
             let self = this;
             self.querySelector(":scope > select").addEventListener("change", function() { self.render(self); });
             INPUT.addEventListener("blur", () => {
-                let json = JSON.parse(self.getAttribute(ATTR_JSON));
+                let json = JSON.parse(self.getAttribute(ATTR_JSON)) || {};
                 let lang = self.querySelector(":scope > select").value;
                 json[lang] = INPUT.value;
                 self.setAttribute(ATTR_JSON, JSON.stringify(json));
