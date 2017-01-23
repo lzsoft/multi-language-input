@@ -1,8 +1,8 @@
 (function() {
     'use strict';
+    //
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
-    let INPUT = null;
     //
     window.customElements.define('multi-language-input', class extends HTMLElement {
         static get observedAttributes() {
@@ -20,17 +20,16 @@
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
-                INPUT = this.querySelector(":scope > textarea");
             } else {
                 this.querySelector(":scope > textarea").remove();
                 this.querySelector(":scope > input").placeholder = this.title;
-                INPUT = this.querySelector(":scope > input");
             }
             //
             this.eventize();
         }
         eventize() {
             let self = this;
+            let INPUT = self.querySelector(":scope > input") || self.querySelector(":scope > textarea");
             self.querySelector(":scope > select").addEventListener("change", function() { self.render(self); });
             INPUT.addEventListener("blur", () => {
                 let json = JSON.parse(self.getAttribute(ATTR_JSON)) || {};
@@ -41,6 +40,7 @@
             });
         }
         render(self) {
+            let INPUT = self.querySelector(":scope > input") || self.querySelector(":scope > textarea");
             let json = {};
             try {
                 json = JSON.parse(self.getAttribute(ATTR_JSON)) || {};
