@@ -17,10 +17,6 @@
             super();
             this.innerHTML = document.querySelector('link[href*="multi.language.input.html"]').import.querySelector("template").innerHTML;
             //
-            if (!this.getAttribute(ATTR_JSON)) {
-                this.setAttribute(ATTR_JSON, "{}");
-            }
-            //
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
@@ -32,7 +28,6 @@
             }
             //
             this.eventize();
-            this.render(this);
         }
         eventize() {
             let self = this;
@@ -42,10 +37,16 @@
                 let lang = self.querySelector(":scope > select").value;
                 json[lang] = INPUT.value;
                 self.setAttribute(ATTR_JSON, JSON.stringify(json));
+                self.dispatchEvent(new Event("blur"));
             });
         }
         render(self) {
-            let json = JSON.parse(self.getAttribute(ATTR_JSON));
+            let json = {};
+            try {
+                json = JSON.parse(self.getAttribute(ATTR_JSON)) || {};
+            } catch (e) {
+                json = {};
+            }
             let lang = self.querySelector(":scope > select").value;
             INPUT.value = json[lang] || "";
         }
