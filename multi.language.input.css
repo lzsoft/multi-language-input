@@ -7,14 +7,18 @@ multi-language-input {
     height: 100%;
     width: 100%;
 }
+
 multi-language-input[data-type='textarea'] > input {
     display: none;
 }
+
 multi-language-input[data-type='input'] > textarea {
     display: none;
 }
+
 multi-language-input > select {
-    background-color: rgba(255, 255, 255, 0.1);
     direction: rtl;
     width: 200px;
+    font-size: 75%;
+    opacity: 0.5;
 }
