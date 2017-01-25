@@ -15,7 +15,7 @@
         }
         constructor() {
             super();
-            this.innerHTML = document.querySelector('link[href*="multi.language.input.html"]').import.querySelector("template").innerHTML;
+            this.innerHTML = document.querySelector('link[href*="multi-language-input.html"]').import.querySelector("template").innerHTML;
             //
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
