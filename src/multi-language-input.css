@@ -20,4 +20,5 @@ multi-language-input > select {
     direction: rtl;
     font-size: 75%;
     opacity: 0.5;
+    line-height: 150%;
 }
