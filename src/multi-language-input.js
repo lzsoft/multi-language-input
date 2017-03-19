@@ -1,6 +1,5 @@
 {
     'use strict';
-    const template = document.getCurrentScriptOwnerDocumentTemplateContent();
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
     window.customElements.define('multi-language-input', class extends HTMLElement {
@@ -14,10 +13,9 @@
         }
         constructor() {
             super();
+            window.Lzsoft.Import.ByTagImport(this);
         }
         connectedCallback() {
-            this.innerHTML = template;
-            //
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
