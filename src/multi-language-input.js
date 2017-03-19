@@ -13,9 +13,9 @@
         }
         constructor() {
             super();
-            window.Lzsoft.Import.ByTagImport(this);
         }
         connectedCallback() {
+            window.Lzsoft.Import.ByTagImport(this);
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
