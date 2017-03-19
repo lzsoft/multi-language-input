@@ -5,5 +5,8 @@
     "license": "MIT",
     "keywords": ["window", "browser", "Math", "NodeList", "web-components"],
     "homepage": "https://github.com/lzsoft/multi-language-input",
-    "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests", "publish.bat", "readme.md"]
+    "ignore": ["**/.*", "bower_components/", "test/", "readme.md"],
+    "dependencies": {
+        "front-end-infrastructure": "lzsoft/front-end-infrastructure"
+    }
 }

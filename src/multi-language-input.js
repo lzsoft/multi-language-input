@@ -1,9 +1,8 @@
-(function() {
+{
     'use strict';
-    //
+    const template = document.getCurrentScriptOwnerDocumentTemplateContent();
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
-    //
     window.customElements.define('multi-language-input', class extends HTMLElement {
         static get observedAttributes() {
             return [ATTR_JSON];
@@ -15,7 +14,9 @@
         }
         constructor() {
             super();
-            this.innerHTML = document.querySelector('link[href*="multi-language-input.html"]').import.querySelector("template").innerHTML;
+        }
+        connectedCallback() {
+            this.innerHTML = template;
             //
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
@@ -51,4 +52,4 @@
             INPUT.value = json[lang] || "";
         }
     });
-}());
+}
