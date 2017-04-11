@@ -4,9 +4,9 @@
     "authors": ["JingAn Chen"],
     "license": "MIT",
     "keywords": ["window", "browser", "Math", "NodeList", "web-components"],
-    "homepage": "https://github.com/lzsoft/multi-language-input",
+    "homepage": "https://github.com/tingting-io/multi-language-input",
     "ignore": ["**/.*", "bower_components/", "test/", "readme.md"],
     "dependencies": {
-        "front-end-infrastructure": "lzsoft/front-end-infrastructure"
+        "avalon-front-end-infrastructure": "tingting-io/avalon-front-end-infrastructure"
     }
 }
