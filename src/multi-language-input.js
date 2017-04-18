@@ -2,7 +2,7 @@
     'use strict';
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
-    window.customElements.define('multi-language-input', class extends HTMLElement {
+    window.customElements.define('multi-language-input', class extends window.HTMLTinplateElement {
         static get observedAttributes() {
             return [ATTR_JSON];
         }
@@ -15,7 +15,6 @@
             super();
         }
         connectedCallback() {
-            window.Lzsoft.Import.ByTagImport(this);
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
