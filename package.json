@@ -1,6 +1,7 @@
 {
     "name": "multi-language-input",
     "main": "multi-language-input.html",
+    "version": "1.0.0",
     "license": "MIT",
     "homepage": "https://github.com/tingting-io/multi-language-input",
     "dependencies": {
