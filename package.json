@@ -1,12 +1,10 @@
 {
     "name": "multi-language-input",
-    "description": "",
-    "authors": ["JingAn Chen"],
+    "main": "multi-language-input.html",
     "license": "MIT",
-    "keywords": ["window", "browser", "Math", "NodeList", "web-components"],
     "homepage": "https://github.com/tingting-io/multi-language-input",
-    "ignore": ["**/.*", "bower_components/", "test/", "readme.md"],
     "dependencies": {
         "avalon-front-end-infrastructure": "tingting-io/avalon-front-end-infrastructure"
-    }
+    },
+    "flat": true
 }
