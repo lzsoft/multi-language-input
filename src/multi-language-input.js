@@ -1,5 +1,4 @@
-{
-    'use strict';
+'use strict'; {
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
     window.customElements.define('multi-language-input', class extends window.HTMLTinplateElement {

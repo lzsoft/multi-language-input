@@ -1,11 +1,21 @@
 {
     "name": "multi-language-input",
-    "main": "multi-language-input.html",
+    "main": "min/multi-language-input.html",
     "version": "1.0.0",
     "license": "MIT",
     "homepage": "https://github.com/tingting-io/multi-language-input",
     "dependencies": {
         "avalon-front-end-infrastructure": "tingting-io/avalon-front-end-infrastructure"
     },
-    "flat": true
+    "flat": true,
+    "scripts": {
+        "init": "npm run init:uglify-es && npm run init:uglifycss && npm run init:html-minifier",
+        "init:uglify-es": "npm install uglify-es -g",
+        "init:uglifycss": "npm install uglifycss -g",
+        "init:html-minifier": "npm install html-minifier -g",
+        "build": "npm run build:uglify-es && npm run build:uglifycss && npm run build:html-minifier",
+        "build:uglify-es": "uglifyjs src/multi-language-input.js -c -m -o min/multi-language-input.js",
+        "build:uglifycss": "uglifycss src/multi-language-input.css --output min/multi-language-input.css",
+        "build:html-minifier": "html-minifier src/multi-language-input.html -o min/multi-language-input.html"
+    }
 }
