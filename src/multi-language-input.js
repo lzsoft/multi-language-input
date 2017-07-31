@@ -1,7 +1,7 @@
-'use strict'; {
+{
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
-    window.customElements.define('multi-language-input', class extends window.HTMLTinplateElement {
+    window.customElements.define('multi-language-input', class extends window.HTMLElement {
         static get observedAttributes() {
             return [ATTR_JSON];
         }
@@ -13,7 +13,8 @@
         constructor() {
             super();
         }
-        connectedCallback() {
+        async connectedCallback() {
+            this.innerHTML = await fetch(`${this.tagName.toLowerCase()}.html`).text();
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
