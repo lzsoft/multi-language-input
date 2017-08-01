@@ -1,4 +1,4 @@
-{
+document.currentScript.loadSameNameHTML(function(template) {
     const ATTR_JSON = "data-json";
     const ATTR_TYPE = "data-type";
     window.customElements.define('multi-language-input', class extends window.HTMLElement {
@@ -14,7 +14,7 @@
             super();
         }
         async connectedCallback() {
-            this.innerHTML = await fetch(`${this.tagName.toLowerCase()}.html`).text();
+            this.innerHTML = template;
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
                 this.querySelector(":scope > textarea").placeholder = this.title;
@@ -49,4 +49,4 @@
             INPUT.value = json[lang] || "";
         }
     });
-}
+});
