@@ -13,7 +13,7 @@ document.currentScript.loadSameNameHTML(function(template) {
         constructor() {
             super();
         }
-        async connectedCallback() {
+        connectedCallback() {
             this.innerHTML = template;
             if (this.getAttribute(ATTR_TYPE) === "textarea") {
                 this.querySelector(":scope > input").remove();
@@ -42,11 +42,11 @@ document.currentScript.loadSameNameHTML(function(template) {
             let json = {};
             try {
                 json = JSON.parse(self.getAttribute(ATTR_JSON)) || {};
+                let lang = self.querySelector(":scope > select").value;
+                INPUT.value = json[lang] || "";
             } catch (e) {
                 json = {};
             }
-            let lang = self.querySelector(":scope > select").value;
-            INPUT.value = json[lang] || "";
         }
     });
 });
